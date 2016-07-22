@@ -27,6 +27,10 @@ $ pyhton mannage.py migrate
 $ python mannage.py runserver
 ```
 
+在 simple_project/setting.py
+line: 132
+更改邮箱账户密码
+
 你还可以部署网站
  - Apache:  http://www.ziqiangxuetang.com/django/django-deploy.html
  - Nginx:   http://www.ziqiangxuetang.com/django/django-nginx-deploy.html
