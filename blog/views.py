@@ -6,6 +6,7 @@ from .models import Post, Comment
 from .form import EmailPostForm, CommentForm
 from taggit.models import Tag
 from haystack.query import SearchQuerySet
+from simple_project.settings import EMAIL_HOST_USER
 
 
 def post_list(request, tag_slug=None):
@@ -84,7 +85,7 @@ def post_share(request, post_id):
                                                         post.title)
             content = "我发现了一篇很nice文章 {}\n 推介给您: {} \n {}"\
                 .format(post.title, post_url, cd['comments'])
-            send_mail(title, content, "zltningx@163.com", [cd['to']])
+            send_mail(title, content, EMAIL_HOST_USER, [cd['to']])
             sent = True
             form.clean()
     else:

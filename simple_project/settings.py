@@ -122,11 +122,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/ling/django_project/project/simple_project/blog/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'blog/static/')
 
 # Media files
 MEDIA_URL = '/uploader/'
-MEDIA_ROOT = '/home/ling/django_project/project/simple_project/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Email setting
 EMAIL_HOST = 'smtp.163.com'  # 163邮箱
