@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+
+{% load blog_tags %}
+
+{% block title %} 搜索结果 {% endblock %}
+
+{% block content %}
+    {% if post_search_list %}
+    <div>
+        <div class="list-group">
+            {% for post_object in post_search_list %}
+                {% with post=post_object.object %}
+                <div class="list-group-item" style="border: 0;">
+                <h2>
+                    <a href="{{ post.get_absolute_url }}" class="modal-title" style="color: #262626">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p class="text-muted">
+                    <small>发布时间: {{ post.publish }}
+                        <br />作者: {{ post.author }}</small>
+                </p>
+                <p class="text-muted">
+                    {{ post.body|markdown|slice:'300' }}
+                </p>
+                 {% for tag in post.tags.all %}
+                     <span class="label" style="background-color: #1b6d85">
+                         <a href="{% url "blog:post_list_by_tag" tag.slug %}" style="color: whitesmoke">
+                             {{ tag.name }}
+                         </a>
+                     </span>
+                     {% if not forloop.last %}&nbsp;{% endif %}
+                 {% endfor %}
+                </div>
+                {% endwith %}
+            {% endfor %}
+        </div>
+    </div>
+        {% include "pagintion.html" with page=post_search_list %}
+    {% else %}
+    <h2 class="">抱歉 什么都没有找到哦！</h2>
+    {% endif %}
+{#    <div style="height:200px; position: absolute"></div>#}
+{% endblock %}

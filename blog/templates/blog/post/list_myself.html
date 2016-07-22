@@ -1,0 +1,47 @@
+{% extends "blog/base.html" %}
+
+{% with active_page="myblog" %}
+
+{% load blog_tags %}
+
+{% block title %}关注网络安全|娱乐圈，Unix|linux学习, Python从入门到放弃{% endblock %}
+
+{% block content %}
+{#    <h1 class="page-header"> 我的博客 </h1>#}
+
+    {% if tag %}
+        <h2 class="page-header">标签：  "{{ tag.name }}"</h2>
+    {% endif %}
+    <div>
+        <div class="list-group">
+            {% for post in my_posts %}
+                <div class="list-group-item" style="border: 0;">
+                <h2>
+                    <a href="{{ post.get_absolute_url }}" class="modal-title" style="color: #262626">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p class="text-muted">
+                    <small>发布时间: {{ post.publish }}
+                        <br />作者: {{ post.author }}</small>
+                </p>
+                <p class="text-muted">
+                    {{ post.body|markdown|slice:'300' }}
+                </p>
+                 {% for tag in post.tags.all %}
+                     <span class="label" style="background-color: #1b6d85">
+                         <a href="{% url "blog:post_list_by_tag" tag.slug %}" style="color: whitesmoke">
+                             {{ tag.name }}
+                         </a>
+                     </span>
+                     {% if not forloop.last %}&nbsp;{% endif %}
+                 {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        {% include "pagintion.html" with page=post_search_list %}
+    </div>
+
+{% endblock %}
+
+{% endwith %}

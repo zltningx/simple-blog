@@ -1,0 +1,13 @@
+<ul class="pager">
+    {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}">前一页</a></li>
+    {% endif %}
+    {% if paginator.num_pages != 1 %}
+    <li class="page-number">
+        {{ page_obj.number }} / {{ paginator.num_pages }}
+    </li>
+    {% endif %}
+    {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}">下一页</a></li>
+    {% endif %}
+</ul>

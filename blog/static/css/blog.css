@@ -1,0 +1,44 @@
+/* title a */
+.modal-title:link {
+    font-size: 45px;
+    font-family: Microsoft YaHei;
+    color: #000000;
+    text-decoration: none;
+}
+.modal-title:visited {
+    font-size: 45px;
+    font-family: Microsoft YaHei;
+    color: #000000;
+    text-decoration: none;
+}
+ .modal-title:hover {
+     font-size: 45px;
+     font-family: Microsoft YaHei;
+     color: #999999;
+     text-decoration: none;
+}
+
+/* tags a */
+.tags:link {
+    /*font-family: Arial;*/
+    font-style: normal;
+    font-size: small;
+    text-decoration: none;
+}
+
+/* blog title h */
+#title {
+    font-size: 80px;
+    font-weight: 500;
+    font-family: Microsoft YaHei;
+    color: #666;
+    text-align: center;
+}
+
+/* limit img */
+
+ img {
+    width: 100px;
+    height: 80px;
+
+}
