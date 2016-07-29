@@ -7,8 +7,7 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-{#    <script type="text/javascript" src="{% static "bootstrap/js/jquery-3.0.0.min.js" %}"></script>#}
+    <script src="{% static "js/jquery.min.js" %}"></script>
     <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
     <link rel="shortcut icon" href="{% static "image/favicon.ico" %}" />
     <link rel="stylesheet" href="{% static "css/blog.css" %}" />
@@ -25,7 +24,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="{% url "blog:post_list" %}" class="navbar-brand">
-                    <img src="{% static "image/5800748.png" %}" style="height: 50px;margin-top: -15px;" />
+                    <img src="{% static "image/siteLogo.png" %}" style="height: 50px;margin-top: -15px;" />
                 </a>
             </div>
             <div class="collapse navbar-collapse">
@@ -61,7 +60,7 @@
     <header class="jumbotron subhead" id="overview" style="background-image: url({% static "image/bg_img.jpg" %})">
       <div class="container">
         <h1>一只攻城狮</h1>
-        <p class="lead">关注网络安全|娱乐圈|Python|Linux。个人博客 : ) &nbsp;&nbsp;  <a href="http://blog.csdn.net/z_lit0" style="color: #0f0f0f">CSDN</a> </p>
+        <p class="lead">关注网络安全|Python|Linux。个人博客 : ) &nbsp;&nbsp;  <a href="http://blog.csdn.net/z_lit0" style="color: #0f0f0f">CSDN</a> </p>
       </div>
     </header>
     {% endblock %}

@@ -9,7 +9,7 @@ class LastestPostFeed(Feed):
     description = '关注网络安全|娱乐圈|Python|Linux'
 
     def items(self):
-        return Post.published.all()[:5]
+        return Post.published.all()
 
     def item_title(self, item):
         return item.title

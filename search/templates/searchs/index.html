@@ -1,0 +1,27 @@
+{% extends "searchs/base.html" %}
+
+
+{% load staticfiles %}
+
+{% block title %}
+    Social engineering database for Hlju ：）
+{% endblock %}
+
+{% block content %}
+    <div style="height: 100px;"></div>
+    <img class="aligncenter" src="{% static "image/searchLogo.png"%}">
+    <div style="height: 30px;"></div>
+    <div class="row head">
+                <form class="col-lg-8 col-lg-offset-2" action="./search/" method="get" role="form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="s" placeholder="What do you wanna?">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                    {% csrf_token %}
+                </form>
+    </div>
+{% endblock %}

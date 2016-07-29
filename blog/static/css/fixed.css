@@ -13,3 +13,10 @@ margin: 0 auto -4em;
 .footer, .push {
 height: 4em;
 }
+
+.wrapper2 {
+min-height: 99%;
+height: auto !important;
+height: 70%;
+margin: 0 auto -4em;
+}

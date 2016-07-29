@@ -20,7 +20,6 @@ from blog.sitemaps import PostSitemap
 from django.conf.urls.static import static
 from django.conf import settings
 
-
 sitemaps = {
     'posts': PostSitemap,
 }
@@ -32,4 +31,7 @@ urlpatterns = [
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^magicSpace/', include('search.urls',
+                                 namespace='magicSpace',
+                                 app_name='search')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
