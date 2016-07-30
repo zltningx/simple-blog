@@ -6,6 +6,7 @@ This just a simple blog write by django
 
   - 2016-07-30 去除了自己写的评论系统，添加了多说!
   - 2016-07-29 增加了search app
+  - 2016-07-24 将site部署apache2
 
 
 # 概述
