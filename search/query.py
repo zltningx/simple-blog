@@ -14,5 +14,5 @@ class Query(object):
         if self.con:
             self.con.close()
 
-    def query(self):
+    def query(self, content):
         pass

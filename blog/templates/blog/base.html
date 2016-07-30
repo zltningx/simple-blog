@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="{% static "image/favicon.ico" %}" />
     <link rel="stylesheet" href="{% static "css/blog.css" %}" />
     <link rel="stylesheet" href="{% static "css/fixed.css"%}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     {% block nav %}
@@ -33,13 +34,13 @@
                     <li {% if active_page == "my_blog" %}class="active"{% endif %}><a href="/my_blog/">原创</a></li>
                     <li class=""><a href="/feed/">RSS</a> </li>
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">小惊喜
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">施工重地
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">查询</a></li>
+                            <li><a href="#">乱七八糟</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">准备</a></li>
+                            <li><a href="#">慎入！</a></li>
                         </ul>
                     </li>
                 </ul>
