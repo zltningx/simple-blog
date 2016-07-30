@@ -16,53 +16,54 @@
     <p>
         {{ post.body|markdown }}
     </p>
-    {% with comments.count as total_comments %}
-        <h4 class="page-header">
-        已有 {{ total_comments }} 条评论
-        </h4>
-    {% endwith %}
-    {% for comment in comments %}
-        <div class="comment">
-            <p class="info">
-                {{ comment.name }}  {{ comment.created }}
-            </p>
-            {{ comment.body|markdown }}
-        </div>
-    {% empty %}
-        <p class="panel-danger"> 还没有评论 ！</p>
-    {% endfor %}
-    {% if new_commnet %}
-        <div>
-            <p class="bg-success">
-                成功留爪！ 握爪! </p>
-            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        {% endif %}
+{#    {% with comments.count as total_comments %}#}
+{#        <h4 class="page-header">#}
+{#        已有 {{ total_comments }} 条评论#}
+{#        </h4>#}
+{#    {% endwith %}#}
+{#    {% for comment in comments %}#}
+{#        <div class="comment">#}
+{#            <p class="info">#}
+{#                {{ comment.name }}  {{ comment.created }}#}
+{#            </p>#}
+{#            {{ comment.body|markdown }}#}
+{#        </div>#}
+{#    {% empty %}#}
+{#        <p class="panel-danger"> 还没有评论 ！</p>#}
+{#    {% endfor %}#}
+{#    {% if new_commnet %}#}
+{#        <div>#}
+{#            <p class="bg-success">#}
+{#                成功留爪！ 握爪! </p>#}
+{#            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
+{#        </div>#}
+{#        {% endif %}#}
 {#    {% else %}#}
         <h3 class="header">留下你的痕迹吧！</h3>
-        <form action="." method="post" class="form-horizontal">
-            {% for field in comment_form %}
-                {% if forloop.last %}
-                    <div class="form-group">
-                    <div class="col-md-9">
-                        <p class="col-md-5">{{ field.label_tag }}</p>{{ field }}
-                        {{ field.errors }}
-                    </div>
-                </div>
-                {% else %}
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <p class="col-md-5">{{ field.label_tag }}</p> {{ field }}
-                        {{ field.errors }}
-                    </div>
-                </div>
-                {% endif %}
-            {% endfor %}
-            {% csrf_token %}
-            <div class="form-group">
-                <div class="col-md-5">
-                    <button class="btn btn-primary">提  交</button>
-                </div>
-            </div>
-        </form>
+    {% include "duoshuo.html" %}
+{#        <form action="." method="post" class="form-horizontal">#}
+{#            {% for field in comment_form %}#}
+{#                {% if forloop.last %}#}
+{#                    <div class="form-group">#}
+{#                    <div class="col-md-9">#}
+{#                        <p class="col-md-5">{{ field.label_tag }}</p>{{ field }}#}
+{#                        {{ field.errors }}#}
+{#                    </div>#}
+{#                </div>#}
+{#                {% else %}#}
+{#                <div class="form-group">#}
+{#                    <div class="col-md-5">#}
+{#                        <p class="col-md-5">{{ field.label_tag }}</p> {{ field }}#}
+{#                        {{ field.errors }}#}
+{#                    </div>#}
+{#                </div>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#            {% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                <div class="col-md-5">#}
+{#                    <button class="btn btn-primary">提  交</button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </form>#}
 {% endblock %}
