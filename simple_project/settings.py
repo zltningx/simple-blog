@@ -92,9 +92,9 @@ DATABASES = {
     },
     'hlju': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hlju',
-        'USER': 'ling',
-        'PASSWORD': 'ling000',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': 3306,
     }
