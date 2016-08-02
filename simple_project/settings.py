@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'ckeditor_uploader',
     'blog',
     'search',
-    'my_hlju',
+    # 'my_hlju',
     'haystack',
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -90,13 +90,19 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'search': {
-        'ENGINE': 'django.db.backends.mysql',   # 另做的一个东西。。小惊喜内容不开放
-        'Name': 'search_db',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+    'hlju': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hlju',
+        'USER': 'ling',
+        'PASSWORD': 'ling000',
+        'HOST': 'localhost',
+        'PORT': 3306,
     }
+}
+
+DATABASE_APPS_MAPPING = {
+    'blog': 'default',
+    'search': 'hlju',
 }
 
 DATABASE_ROUTERS = ['simple_project.database_router.DatabaseAppsRouter']
@@ -159,7 +165,7 @@ CKEDITOR_CONFIGS = {
 		    {'name': 'styles'},
 		    {'name': 'others'},
         ],
-        'extraPlugins': 'markdown',
+        # 'extraPlugins': 'markdown',
         "removeButtons": "Underline,Subscript,Superscript",
         "autoParagraph": False,
         "removeDialogTabs": "image:advanced;link:advanced",

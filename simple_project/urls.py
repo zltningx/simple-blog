@@ -34,6 +34,6 @@ urlpatterns = [
     url(r'^magicSpace/', include('search.urls',
                                  namespace='magicSpace',
                                  app_name='search')),
-    url(r'^hlju/', include('my_hlju.urls', namespace='my_hlju',
-                           app_name='my_hlju')),
+    # url(r'^hlju/', include('my_hlju.urls', namespace='my_hlju',
+    #                        app_name='my_hlju')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
