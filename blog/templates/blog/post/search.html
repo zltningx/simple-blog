@@ -9,7 +9,8 @@
     <div>
         <div class="list-group">
             {% for post_object in post_search_list %}
-                {% with post=post_object.object %}
+{#                {% with post=post_object.object %}#}
+                  {% with post=post_object %}
                 <div class="list-group-item" style="border: 0;">
                 <h2>
                     <a href="{{ post.get_absolute_url }}" class="modal-title" style="color: #262626">

@@ -10,7 +10,6 @@ class HumanManageer(models.Manager):
 
 
 class Human(models.Model):
-    _database = 'hlju'
     GENDER_CHOICE = (
         ('male', '男'),
         ('female', '女')

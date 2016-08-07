@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from django.core.mail import send_mail
+from django.db.models import Q
 from .models import Post, Comment
 from .form import EmailPostForm, CommentForm
 from taggit.models import Tag
@@ -17,7 +18,7 @@ def post_list(request, tag_slug=None):
         tag = get_object_or_404(Tag, slug=tag_slug)
         object_list = object_list.filter(tags__in=[tag])
 
-    paginator = Paginator(object_list, 5)  # 一页 3片文章
+    paginator = Paginator(object_list, 3)  # 一页 3片文章
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -34,7 +35,7 @@ def post_list(request, tag_slug=None):
 class PostMyselfView(ListView):
     queryset = Post.published.all().filter(owner='myself')
     context_object_name = 'my_posts'
-    paginate_by = 5
+    paginate_by = 3
     template_name = 'blog/post/list_myself.html'
 
 # class PostListView(ListView):
@@ -105,7 +106,15 @@ class SearchView(ListView):
 
     def get_queryset(self):
         s = self.request.GET.get('s', '')
-        post_search_list = SearchQuerySet().models(Post).\
-            filter(content=s).load_all()
+        s = s.replace("'", "")
+        # # solr 搜索引擎
+        # post_search_list = SearchQuerySet().models(Post).\
+        #     filter(content=s).load_all()
+        post_search_list = Post.object.only(
+            'title', 'body'
+        ).filter(
+            Q(title__icontains=s) |
+            Q(body__icontains=s),
+        )
 
         return post_search_list

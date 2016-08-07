@@ -38,8 +38,8 @@ INSTALLED_APPS = (
     'ckeditor_uploader',
     'blog',
     'search',
-    # 'my_hlju',
-    'haystack',
+    'my_hlju',
+    # 'haystack',
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.admin',
@@ -92,9 +92,9 @@ DATABASES = {
     },
     'hlju': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'hlju',
+        'USER': 'user',
+        'PASSWORD': 'passwd',
         'HOST': 'localhost',
         'PORT': 3306,
     }
