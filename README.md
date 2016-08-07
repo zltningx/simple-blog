@@ -3,7 +3,7 @@ This just a simple blog write by django
 
 # 样例
 
-[my simple blog](http://zltningx.com.cn)
+http://zltningx.com.cn
 
 # 更新
 
