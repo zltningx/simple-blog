@@ -1,9 +1,14 @@
 # simple-blog
 This just a simple blog write by django
 
+# 样例
+
+[my simple blog](zltningx.com.cn)
 
 # 更新
 
+  - 2016-08-07 为search app 增加了ip访问限制，每天允许访问6次，防止遍历。
+  - 2016-08-07 solr 引擎于昨日的服务器（1M & 1G）的dos测试中占用巨而资源，现已移除
   - 2016-08-02 将数据库入库并更新了search app
   - 2016-08-01 采用多数据库联用（sqlite3 + mysql)
   - 2016-07-30 去除了自己写的评论系统，添加了多说!
