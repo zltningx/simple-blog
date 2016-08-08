@@ -6,7 +6,7 @@ This just a simple blog write by django
 http://zltningx.com.cn
 
 # 更新
-
+  - 2016-08-08 增加了缓存系统
   - 2016-08-07 为search app 增加了ip访问限制，每天允许访问6次，防止遍历。
   - 2016-08-07 solr 引擎于昨日的服务器（1M & 1G）的dos测试中占用巨而资源，现已移除
   - 2016-08-02 将数据库入库并更新了search app
@@ -20,7 +20,7 @@ http://zltningx.com.cn
 网站基于Django 1.8.x 开发，集成了多个django 插件
   - ckeditor 富文本编辑器
   - taggit 标签
-  - solr 搜索引擎 需要下载 solr 4.10.4 版本 并配置好
+  - solr 搜索引擎 需要下载 solr 4.10.4 版本 并配置好 (引擎吃配置，现已经可以选择使用)
 
 安装必要库。
 ```sh
@@ -41,8 +41,10 @@ $ python mannage.py runserver
 ```
 
 在 simple_project/setting.py
-line: 132
-更改邮箱账户密码
+line: 132  
+更改邮箱 账户&密码  
+line 97  
+更改mysql 用户&密码  
 
 你还可以部署网站
  - Apache:  http://www.ziqiangxuetang.com/django/django-deploy.html
