@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from . import views
 from .feeds import LastestPostFeed
+from django.views.decorators.cache import cache_page
 
 urlpatterns = [
     # post views
@@ -12,6 +13,6 @@ urlpatterns = [
     url(r'^tag/(?P<tag_slug>[-\w]+)/$', views.post_list,
         name='post_list_by_tag'),
     url(r'^feed/$', LastestPostFeed(), name='post_feed'),
-    url(r'^search/$', views.SearchView.as_view(), name='post_search'),
-    url(r'^my_blog/$', views.PostMyselfView.as_view(), name='post_myself'),
+    url(r'^search/$', cache_page(60 * 15)(views.SearchView.as_view()), name='post_search'),
+    url(r'^my_blog/$', cache_page(60 * 15)(views.PostMyselfView.as_view()), name='post_myself'),
 ]

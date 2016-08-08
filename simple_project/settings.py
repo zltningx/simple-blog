@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'blog',
     'search',
     'my_hlju',
+    'ratelimit',
     # 'haystack',
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -93,8 +94,8 @@ DATABASES = {
     'hlju': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'hlju',
-        'USER': 'user',
-        'PASSWORD': 'passwd',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': 3306,
     }
@@ -108,6 +109,25 @@ DATABASE_APPS_MAPPING = {
 DATABASE_ROUTERS = ['simple_project.database_router.DatabaseAppsRouter']
 
 
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/home/ling/django_cache',
+        'TIMEOUT': 600,
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000
+        }
+    },
+    # 'connection-errors': {
+    #     'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+    #     'LOCATION': '/home/ling/django_cache_error',
+    #     'TIMEOUT': 600,
+    #     'OPTIONS': {
+    #         'MAX_ENTRIES': 1000
+    #     }
+    # },
+}
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 

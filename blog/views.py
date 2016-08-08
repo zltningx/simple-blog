@@ -8,8 +8,10 @@ from .form import EmailPostForm, CommentForm
 from taggit.models import Tag
 from haystack.query import SearchQuerySet
 from simple_project.settings import EMAIL_HOST_USER
+from django.views.decorators.cache import cache_page
 
 
+@cache_page(60 * 15)
 def post_list(request, tag_slug=None):
     object_list = Post.published.all()
     tag = None
@@ -45,6 +47,7 @@ class PostMyselfView(ListView):
 #     template_name = 'blog/post/list.html'
 
 
+@cache_page(60 * 15)
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post, status='published',
                              publish__year=year,
@@ -69,6 +72,7 @@ def post_detail(request, year, month, day, post):
                    'comment_form': comment_form})
 
 
+@cache_page(60 * 15)
 def post_share(request, post_id):
     # 通过post id 检索
     post = get_object_or_404(Post, id=post_id, status='published')
