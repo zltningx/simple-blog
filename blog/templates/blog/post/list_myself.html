@@ -28,6 +28,8 @@
                 <p class="text-muted">
                     {{ post.body|markdown|truncatechars:300 }}
                 </p>
+                </div>
+                <div class="list-group-item" style="border: 0">
                  {% for tag in post.tags.all %}
                      <span class="label" style="background-color: #1b6d85">
                          <a href="{% url "blog:post_list_by_tag" tag.slug %}" style="color: whitesmoke">
