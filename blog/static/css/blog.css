@@ -38,7 +38,8 @@
 /* limit img */
 
  img {
-     min-width: 100%;
-     min-height: 100%;
-     vertical-align: middle;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+     max-width: 100%;
  }
