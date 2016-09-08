@@ -6,6 +6,7 @@ This just a simple blog write by django
 http://zltningx.com.cn
 
 # 更新
+  - 2016-09-08 删除了django-limiter 增加了自己写的ip限制app
   - 2016-08-08 增加了缓存系统
   - 2016-08-07 为search app 增加了ip访问限制，每天允许访问6次，防止遍历。
   - 2016-08-07 solr 引擎于昨日的服务器（1M & 1G）的dos测试中占用巨而资源，现已移除
