@@ -7,8 +7,10 @@ MIN_SECONDS = 24 * 60 * 60
 
 
 def filter_ip(request):
-    remote_ip = HttpRequest.get_host(request)
-
+    try:
+        remote_ip = request.META['HTTP_X_FORWARDED_FOR']
+    except:
+        remote_ip = request.META['REMOTE_ADDR']
     try:
         record = IpLimiter.objects.get(ip=remote_ip)
     except IpLimiter.DoesNotExist:
