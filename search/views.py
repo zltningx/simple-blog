@@ -2,21 +2,23 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, TemplateView
 from django.db.models import Q
 from .models import Human
-from ratelimit.mixins import RatelimitMixin
+from ip_limiter.ipLimiter import filter_ip
 
 
 class SearchIndexView(TemplateView):
     template_name = "searchs/index.html"
 
 
-class SearchResultView(RatelimitMixin, ListView):
+class SearchResultView(ListView):
     template_name = "searchs/result.html"
     context_object_name = "search_list"
-    ratelimit_key = 'ip'
-    ratelimit_rate = '3/d'
-    ratelimit_block = True
 
     def get_context_data(self, **kwargs):
+        try:
+            filter_ip(self.request)
+        except Exception as e:
+            print(e)
+            return None
         kwargs['s'] = self.request.GET.get('s', '')
         return super(SearchResultView, self).get_context_data(**kwargs)
 

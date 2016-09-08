@@ -34,12 +34,12 @@ SITE_ID = 1
 
 INSTALLED_APPS = (
     'taggit',
+    'ip_limiter',
     'ckeditor',
     'ckeditor_uploader',
     'blog',
     'search',
     'my_hlju',
-    'ratelimit',
     # 'haystack',
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -104,6 +104,7 @@ DATABASES = {
 DATABASE_APPS_MAPPING = {
     'blog': 'default',
     'search': 'hlju',
+    'ip_limiter': 'hlju',
 }
 
 DATABASE_ROUTERS = ['simple_project.database_router.DatabaseAppsRouter']
