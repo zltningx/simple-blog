@@ -138,7 +138,7 @@ DEFAULT_CHARSET = 'utf-8'
 
 LANGUAGE_CODE = 'zh-CN'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 

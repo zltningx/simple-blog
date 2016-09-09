@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, TemplateView
+from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from .models import Human
 from ip_limiter.ipLimiter import filter_ip
@@ -8,7 +8,6 @@ from ip_limiter.ipLimiter import filter_ip
 class SearchIndexView(TemplateView):
     template_name = "searchs/index.html"
 
-
 class SearchResultView(ListView):
     template_name = "searchs/result.html"
     context_object_name = "search_list"
@@ -16,9 +15,8 @@ class SearchResultView(ListView):
     def get_context_data(self, **kwargs):
         try:
             filter_ip(self.request)
-        except Exception as e:
-            print(e)
-            return None
+        except:
+            raise PermissionDenied
         kwargs['s'] = self.request.GET.get('s', '')
         return super(SearchResultView, self).get_context_data(**kwargs)
 
