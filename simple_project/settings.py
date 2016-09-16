@@ -34,6 +34,7 @@ SITE_ID = 1
 
 INSTALLED_APPS = (
     'taggit',
+    'captcha',
     'ip_limiter',
     'ckeditor',
     'ckeditor_uploader',
@@ -105,6 +106,7 @@ DATABASE_APPS_MAPPING = {
     'blog': 'default',
     'search': 'hlju',
     'ip_limiter': 'hlju',
+    'captcha': 'hlju',
 }
 
 DATABASE_ROUTERS = ['simple_project.database_router.DatabaseAppsRouter']
@@ -194,3 +196,6 @@ CKEDITOR_CONFIGS = {
         "startupMode": 'source',
     }
 }
+
+CAPTCHA_IMAGE_SIZE = (100, 25)
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'

@@ -1,9 +1,8 @@
 from django.conf.urls import url
-from .views import SearchResultView, SearchIndexView
-from django.views.decorators.cache import cache_page
+from .views import search_view, ajax_res
 
 
 urlpatterns = [
-    url(r'^$', cache_page(60 * 15)(SearchIndexView.as_view()), name='index'),
-    url(r'^search/$', cache_page(60 * 15)(SearchResultView.as_view()), name='result'),
+    url(r'^$', search_view, name='index'),
+    url(r'^ajax_res/', ajax_res, name='ajax_res'),
 ]

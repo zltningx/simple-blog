@@ -1,6 +1,5 @@
 {% extends "searchs/base.html" %}
 
-
 {% load staticfiles %}
 
 {% block title %}
@@ -12,17 +11,53 @@
     <img class="img-responsive center-block" src="{% static "image/searchLogo.png"%}">
     <div style="height: 30px;"></div>
     <div class="row head">
-                <form class="col-lg-8 col-lg-offset-2" action="./search/" method="get" role="form">
+                <form class="col-lg-8 col-lg-offset-2" action="." method="post">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="s" placeholder="What do you wanna?">
                         {% csrf_token %}
-                        <span class="input-group-btn">
-                            <button class="btn btn-info" type="submit">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
+                        {% for filed in form %}
+                            <div class="form-group">
+                                {% if filed.label == 'Search' %}
+                                    {{ filed }}
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            {% else %}
+                                    {{ filed }}
+                            {% endif %}
+                            </div>
+                        {% endfor %}
                     </div>
-
                 </form>
     </div>
+    {% if result and result != '- -' %}
+            <div>
+                <div class="list-group">
+                {% for person in result %}
+                    <div class="list-group-item" style="border: 0;">
+                        <p>
+                            {{ person.xh }}
+                        </p>
+                        <p>
+                            {{ person.name }}
+                        </p>
+                        <p>
+                            {{ person.gender }}
+                        </p>
+                        <p>
+                            {{ person.phoneNumber }}
+                        </p>
+                        <p>
+                            {{ person.college }}
+                        </p>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+    {% elif result != '- -' %}
+        <div>
+            <h2 style="color: oldlace">WARNING! 404  No Found！</h2>
+        </div>
+    {% endif %}
 {% endblock %}
